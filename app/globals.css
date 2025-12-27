@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sora), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: #000000;
+  background: 
+    radial-gradient(ellipse 80% 50% at top, rgba(187, 247, 208, 0.5) 0%, rgba(187, 247, 208, 0.35) 20%, rgba(187, 247, 208, 0.2) 40%, rgba(187, 247, 208, 0.1) 60%, rgba(0, 0, 0, 0.9) 80%, #000000 100%),
+    radial-gradient(ellipse 60% 40% at bottom right, rgba(187, 247, 208, 0.35) 0%, rgba(187, 247, 208, 0.25) 30%, rgba(187, 247, 208, 0.15) 50%, rgba(0, 0, 0, 0.85) 70%, #000000 100%),
+    radial-gradient(ellipse 60% 40% at bottom left, rgba(187, 247, 208, 0.3) 0%, rgba(187, 247, 208, 0.2) 30%, rgba(187, 247, 208, 0.12) 50%, rgba(0, 0, 0, 0.85) 70%, #000000 100%),
+    radial-gradient(ellipse 50% 30% at center, rgba(187, 247, 208, 0.25) 0%, rgba(187, 247, 208, 0.15) 40%, rgba(187, 247, 208, 0.08) 60%, rgba(0, 0, 0, 0.9) 80%, #000000 100%),
+    conic-gradient(from 180deg at 50% 50%, #000000 0deg, #000000 50deg, rgba(187, 247, 208, 0.3) 100deg, rgba(187, 247, 208, 0.6) 160deg, rgba(187, 247, 208, 0.7) 180deg, rgba(187, 247, 208, 0.6) 200deg, rgba(187, 247, 208, 0.3) 260deg, #000000 310deg, #000000 360deg);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Privy Modal Customization */
+:root {
+  --privy-color-primary: #BBF7D0;
+  --privy-color-text: #ffffff;
+  --privy-color-background: #0a0a0a;
+  --privy-color-background-2: #1a1a1a;
+  --privy-color-border: #2a2a2a;
+  --privy-color-error: #ef4444;
+  --privy-color-success: #BBF7D0;
+}
+
+/* Override Privy modal styles */
+[data-privy-root] {
+  --privy-color-primary: #BBF7D0 !important;
+  --privy-color-text: #ffffff !important;
+  --privy-color-background: #0a0a0a !important;
+  --privy-color-background-2: #1a1a1a !important;
+  --privy-color-border: #2a2a2a !important;
+}
+
+[data-privy-root] [class*="privy"] {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+}
+
+[data-privy-root] button[class*="privy"] {
+  background-color: transparent !important;
+  border: 2px solid #BBF7D0 !important;
+  color: #BBF7D0 !important;
+  border-radius: 0.5rem !important;
+}
+
+[data-privy-root] button[class*="privy"]:hover {
+  background-color: rgba(187, 247, 208, 0.1) !important;
+}
+
+[data-privy-root] [class*="privy-modal"] {
+  background-color: #0a0a0a !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 1rem !important;
+}
+
+[data-privy-root] [class*="privy-modal-header"] {
+  background-color: #0a0a0a !important;
+  border-bottom: 1px solid #2a2a2a !important;
+}
+
+[data-privy-root] [class*="privy-wallet-button"] {
+  background-color: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+  color: #ffffff !important;
+  border-radius: 0.5rem !important;
+}
+
+[data-privy-root] [class*="privy-wallet-button"]:hover {
+  border-color: #BBF7D0 !important;
+  background-color: rgba(187, 247, 208, 0.05) !important;
+}
+
+[data-privy-root] input[class*="privy"] {
+  background-color: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+  color: #ffffff !important;
+  border-radius: 0.5rem !important;
+}
+
+[data-privy-root] input[class*="privy"]:focus {
+  border-color: #BBF7D0 !important;
+  outline: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
