@@ -16,7 +16,7 @@ interface Token {
 }
 
 export default function Swap() {
-  const { authenticated } = usePrivy()
+  const { authenticated, login } = usePrivy()
   const [fromToken, setFromToken] = useState<Token>({
     symbol: 'ARC',
     logo: arcLogo,
@@ -192,7 +192,14 @@ export default function Swap() {
               Swap
             </motion.button>
           ) : (
-            <WalletButton fullWidth className="py-4 rounded-xl" />
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={login}
+              className="w-full py-4 bg-transparent border-2 border-primary-green text-primary-green font-semibold rounded-xl hover:bg-primary-green/10 transition-colors"
+            >
+              Connect wallet
+            </motion.button>
           )}
         </div>
       </motion.div>
