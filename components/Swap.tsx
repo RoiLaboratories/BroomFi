@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
+import { usePrivy } from '@privy-io/react-auth'
 import arcLogo from '@/assets/arc_logo_1-removebg-preview.png'
 import usdcLogo from '@/assets/USDC-fotor-bg-remover-2025111075935.png'
 import WalletButton from './WalletButton'
@@ -15,6 +16,7 @@ interface Token {
 }
 
 export default function Swap() {
+  const { authenticated } = usePrivy()
   const [fromToken, setFromToken] = useState<Token>({
     symbol: 'ARC',
     logo: arcLogo,
@@ -29,6 +31,13 @@ export default function Swap() {
   const [toAmount, setToAmount] = useState('0.00')
 
   const handleSwap = () => {
+    // Swap logic will go here
+    console.log('Swapping', fromAmount, fromToken.symbol, 'to', toAmount, toToken.symbol)
+  }
+
+  const isSwapDisabled = !authenticated || !fromAmount || parseFloat(fromAmount) <= 0 || fromAmount === '0.00'
+
+  const handleTokenSwap = () => {
     const temp = fromToken
     setFromToken(toToken)
     setToToken(temp)
@@ -118,7 +127,7 @@ export default function Swap() {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={handleSwap}
+            onClick={handleTokenSwap}
             className="p-3 bg-primary-dark border-2 border-primary-gray-light rounded-full hover:border-primary-green transition-colors"
           >
             <Icon icon="mdi:arrow-down" className="w-5 h-5 text-primary-green" />
@@ -166,9 +175,25 @@ export default function Swap() {
           </div>
         </div>
 
-        {/* Connect Wallet Button */}
+        {/* Connect Wallet / Swap Button */}
         <div className="mt-6">
-          <WalletButton fullWidth className="py-4 rounded-xl" />
+          {authenticated ? (
+            <motion.button
+              whileHover={!isSwapDisabled ? { scale: 1.02 } : {}}
+              whileTap={!isSwapDisabled ? { scale: 0.98 } : {}}
+              onClick={handleSwap}
+              disabled={isSwapDisabled}
+              className={`w-full py-4 bg-transparent border-2 border-primary-green text-primary-green font-semibold rounded-xl transition-colors ${
+                isSwapDisabled
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-primary-green/10'
+              }`}
+            >
+              Swap
+            </motion.button>
+          ) : (
+            <WalletButton fullWidth className="py-4 rounded-xl" />
+          )}
         </div>
       </motion.div>
 
